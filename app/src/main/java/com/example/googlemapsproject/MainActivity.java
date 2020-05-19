@@ -145,13 +145,13 @@ public class MainActivity extends FragmentActivity
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("User Current Location");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-        markerOptions.draggable(true);
-
-        currentUserLocationMarker = mMap.addMarker(markerOptions);
+//        MarkerOptions markerOptions = new MarkerOptions();
+//        markerOptions.position(latLng);
+//        markerOptions.title("User Current Location");
+//        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+//        markerOptions.draggable(true);
+//
+//        currentUserLocationMarker = mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
 
@@ -265,8 +265,9 @@ public class MainActivity extends FragmentActivity
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         return;
                     }
-                    Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-                    LatLng currLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+//                    Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+//                    Toast.makeText(MainActivity.this, "Last location: "+lastLocation, Toast.LENGTH_SHORT).show();
+                    LatLng currLatLng = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
                     LatLng toLatLng = markerOptions.getPosition();
 
                     path.add(currLatLng);
