@@ -2,7 +2,6 @@ package com.example.googlemapsproject;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -10,7 +9,6 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
@@ -18,7 +16,6 @@ import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,7 +31,6 @@ import com.google.android.gms.location.GeofencingRequest;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -57,13 +53,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends FragmentActivity
+public class MapActivity extends FragmentActivity
         implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
@@ -80,7 +75,7 @@ public class MainActivity extends FragmentActivity
     private Marker currentUserLocationMarker;
     private static final int Request_User_Location_Code = 99;
     private String s1, s2;
-    private SearchView searchView;
+//    private SearchView searchView;
 
     private int BACKGROUND_LOCATION_ACCESS_REQUEST_CODE = 10002;
 
@@ -89,7 +84,7 @@ public class MainActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        searchView = findViewById(R.id.location_search);
+//        searchView = findViewById(R.id.location_search);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkUserLocationPermission();
@@ -103,35 +98,35 @@ public class MainActivity extends FragmentActivity
         geofencingClient = LocationServices.getGeofencingClient(this);
         geofenceHelper = new GeofenceHelper(this);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                String location = searchView.getQuery().toString();
-                List<Address> addressList = null;
-                if (location != null || !location.equals("")) {
-                    Geocoder geocoder = new Geocoder(MainActivity.this);
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Address address = addressList.get(0);
-                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                    s1 = Double.toString(address.getLatitude());
-                    s2 = Double.toString(address.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(location).icon
-                            (BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f));
-                }
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                String location = searchView.getQuery().toString();
+//                List<Address> addressList = null;
+//                if (location != null || !location.equals("")) {
+//                    Geocoder geocoder = new Geocoder(MapActivity.this);
+//                    try {
+//                        addressList = geocoder.getFromLocationName(location, 1);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Address address = addressList.get(0);
+//                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+//                    s1 = Double.toString(address.getLatitude());
+//                    s2 = Double.toString(address.getLongitude());
+//                    mMap.addMarker(new MarkerOptions().position(latLng).title(location).icon
+//                            (BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+//                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f));
+//                }
+//
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
 
     }
 
@@ -428,7 +423,7 @@ public class MainActivity extends FragmentActivity
             String duration = "";
 
             if (lists.size()<1) {
-                Toast.makeText(MainActivity.this, "No lists", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapActivity.this, "No lists", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -453,7 +448,7 @@ public class MainActivity extends FragmentActivity
                     polylineOptions.color(Color.BLUE);
                     polylineOptions.geodesic(true);
                 } else {
-                    Toast.makeText(MainActivity.this, "Path not found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MapActivity.this, "Path not found", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -462,7 +457,7 @@ public class MainActivity extends FragmentActivity
             if (polylineOptions!=null) {
                 mMap.addPolyline(polylineOptions);
             }else {
-                Toast.makeText(MainActivity.this, "Direction not found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapActivity.this, "Direction not found", Toast.LENGTH_SHORT).show();
             }
 
         }

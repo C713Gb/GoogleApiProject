@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapDashboardActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@id/lastMarathon">
+
+        <ImageView
+            android:id="@+id/marathonImg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/marathoncropped"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/startMarathon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="Start marathon"
+            android:textAllCaps="false"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/lastMarathon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Last Marathon"
+            android:textColor="#696969"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:padding="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:background="#0000ff">
+
+                <TextView
+                    android:id="@+id/stepsWalked"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="2000 Steps"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:padding="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:background="#00ff00">
+
+                <TextView
+                    android:id="@+id/activeTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="45 minutes"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:padding="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:background="#ff0000">
+
+                <TextView
+                    android:id="@+id/averageSpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="10 avg speed"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:padding="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:background="#0000ff"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/historyOfMarathon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="History"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:padding="10dp"
+                    android:clickable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:background="#00ff00"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/rankInMarathon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Rank"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:padding="10dp"
+                    android:clickable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:background="#ff0000"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/shareApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Share"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:padding="10dp"
+                    android:clickable="true"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
