@@ -4,20 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MapDashboardActivity">
 
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DASHBOARD"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"/>
+
+    </Toolbar>
+
     <LinearLayout
+        android:id="@+id/layoutOne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_above="@id/lastMarathon">
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/lastMarathonLayout">
 
-        <ImageView
-            android:id="@+id/marathonImg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/marathoncropped"
-            android:layout_weight="1"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/marathonImg"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/marathoncropped"-->
+<!--            android:layout_weight="1"/>-->
 
         <Button
             android:id="@+id/startMarathon"
@@ -25,175 +46,138 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="20sp"
-            android:text="Start marathon"
+            android:text="Go to Marathon"
+            android:textColor="#FFFFFF"
             android:textAllCaps="false"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/marathon_btn"/>
 
     </LinearLayout>
 
 
+    <LinearLayout
+        android:id="@+id/lastMarathonLayout"
+        android:layout_above="@id/leaderboardLayout"
+        android:elevation="5dp"
+        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/layout_background"
+        android:padding="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Last Marathon"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:paddingBottom="5dp"
+            android:paddingTop="2dp"
+            android:paddingLeft="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#Rank - "
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:padding="2dp"/>
+
+            <TextView
+                android:id="@+id/rank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:padding="2dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Steps walked - "
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:padding="2dp"/>
+
+            <TextView
+                android:id="@+id/stepsWalkedMarathon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10000"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:padding="2dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Winning streak - "
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:padding="2dp"/>
+
+            <TextView
+                android:id="@+id/winningStreak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:padding="2dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/lastMarathon"
+        android:id="@+id/leaderboardLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp">
 
-        <TextView
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/leaderboardBtn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last Marathon"
-            android:textColor="#696969"
-            android:textSize="22sp"
-            android:gravity="center"
-            android:padding="10dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:background="#0000ff">
-
-                <TextView
-                    android:id="@+id/stepsWalked"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="2000 Steps"
-                    android:gravity="center"
-                    android:textSize="20sp"
-                    android:padding="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:background="#00ff00">
-
-                <TextView
-                    android:id="@+id/activeTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="45 minutes"
-                    android:gravity="center"
-                    android:textSize="20sp"
-                    android:padding="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:background="#ff0000">
-
-                <TextView
-                    android:id="@+id/averageSpeed"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="10 avg speed"
-                    android:gravity="center"
-                    android:textSize="20sp"
-                    android:padding="10dp"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:background="#0000ff"
-                android:clickable="true">
-
-                <TextView
-                    android:id="@+id/historyOfMarathon"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="History"
-                    android:gravity="center"
-                    android:textSize="25sp"
-                    android:padding="10dp"
-                    android:clickable="true"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:background="#00ff00"
-                android:clickable="true">
-
-                <TextView
-                    android:id="@+id/rankInMarathon"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Rank"
-                    android:gravity="center"
-                    android:textSize="25sp"
-                    android:padding="10dp"
-                    android:clickable="true"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:background="#ff0000"
-                android:clickable="true">
-
-                <TextView
-                    android:id="@+id/shareApp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Share"
-                    android:gravity="center"
-                    android:textSize="25sp"
-                    android:padding="10dp"
-                    android:clickable="true"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
+            android:layout_gravity="center"
+            android:text="View Leaderboard"
+            android:textSize="18dp"
+            android:textColor="@color/colorPrimary"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@drawable/leaderboard_btn"/>
 
     </LinearLayout>
+
 
 </RelativeLayout>
