@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -45,6 +46,22 @@ public class MapDashboardActivity extends AppCompatActivity {
         // Make visibility of lastMarathon and leaderboardLayout GONE if no data
 
         Button leaderboard = findViewById(R.id.leaderboardBtn);
+        leaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapDashboardActivity.this, LeaderboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button startMarathon = findViewById(R.id.startMarathon);
+        startMarathon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapDashboardActivity.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
